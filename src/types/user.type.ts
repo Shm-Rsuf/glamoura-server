@@ -8,6 +8,6 @@ export type userType = {
   photoUrl: string;
   address?: string;
   phoneNumber?: string;
-  role: 'user | admin';
+  role: 'user' | 'admin';
   bookings: bookingType[];
 } & Document;

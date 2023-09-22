@@ -1,5 +1,5 @@
 import { Document } from 'mongoose';
-import { specialistType } from './speacialist.type';
+import { specialistType } from './specialist.type';
 import { bookingType } from './booking.type';
 
 export type beautyPackageType = {

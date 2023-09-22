@@ -7,31 +7,38 @@ const userSchema = new Schema<userType>(
       type: String,
       required: true,
     },
+
     email: {
       type: String,
       required: true,
       unique: true,
     },
+
     password: {
       type: String,
       required: true,
     },
+
     photoUrl: {
       type: String,
       required: true,
     },
+
     address: {
       type: String,
     },
+
     phoneNumber: {
       type: String,
     },
+
     role: {
       enum: ['user', 'admin'],
       default: 'user',
       type: String,
       required: true,
     },
+
     bookings: [
       {
         type: mongoose.Schema.Types.ObjectId,
@@ -44,5 +51,5 @@ const userSchema = new Schema<userType>(
   }
 );
 
-const UserModel = model<userType>('user', userSchema);
+const UserModel = model<userType>('User', userSchema);
 export default UserModel;

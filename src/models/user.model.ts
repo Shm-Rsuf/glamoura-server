@@ -96,5 +96,23 @@ userSchema.statics.register = async function (
   return user;
 };
 
+/* user login function */
+userSchema.statics.login = async function (email, password): Promise<userType> {
+  if (!email || !password) {
+    throw new Error('must be filled email and password');
+  }
+
+  const user = await this.findOne({ email });
+  if (!user) {
+    throw new Error('incorrect email or password');
+  }
+
+  const match = await bcrypt.compare(password, user.password);
+  if (!match) {
+    throw new Error('incorrect email or password');
+  }
+  return user;
+};
+
 const UserModel = model<userType>('User', userSchema);
 export default UserModel;

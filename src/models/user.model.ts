@@ -2,6 +2,7 @@ import mongoose, { Schema, model } from 'mongoose';
 import { userType } from '../types/user.type';
 import validator from 'validator';
 import bcrypt from 'bcrypt';
+import { UserModelInterface } from '../interfaces/user.interface';
 
 const userSchema = new Schema<userType>(
   {
@@ -114,5 +115,5 @@ userSchema.statics.login = async function (email, password): Promise<userType> {
   return user;
 };
 
-const UserModel = model<userType>('User', userSchema);
+const UserModel = model<userType, UserModelInterface>('User', userSchema);
 export default UserModel;

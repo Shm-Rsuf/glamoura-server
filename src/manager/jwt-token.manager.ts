@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
-import jwt, { JwtPayload } from 'jsonwebtoken';
 dotenv.config();
+import jwt, { JwtPayload } from 'jsonwebtoken';
 
 export default class jwtTokenManager {
   private readonly secret: string;

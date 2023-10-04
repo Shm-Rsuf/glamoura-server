@@ -26,7 +26,7 @@ export default class BeautyPackageController {
       }
 
       await Promise.resolve().then(async () => {
-        const beautyPackage = await BeautyPackageModel.findById({});
+        const beautyPackage = await BeautyPackageModel.findById(bid);
         res.status(200).json(beautyPackage);
       });
     } catch (error: unknown) {
@@ -58,8 +58,8 @@ export default class BeautyPackageController {
       const { title, description, category, images, price } = req.body;
       const { bid } = req.params;
 
-      if (mongoose.Types.ObjectId.isValid(bid)) {
-        res.status(404).json({ message: 'user not found!' });
+      if (!mongoose.Types.ObjectId.isValid(bid)) {
+        res.status(404).json({ message: 'beauty package not found!' });
       }
 
       await Promise.resolve().then(async () => {
@@ -85,8 +85,8 @@ export default class BeautyPackageController {
     try {
       const { bid } = req.params;
 
-      if (mongoose.Types.ObjectId.isValid(bid)) {
-        res.status(404).json({ message: 'user not found!' });
+      if (!mongoose.Types.ObjectId.isValid(bid)) {
+        res.status(404).json({ message: 'beauty package not found!' });
       }
 
       await Promise.resolve().then(async () => {

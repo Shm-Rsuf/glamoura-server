@@ -16,10 +16,10 @@ specialistRouter.get('/:sid', specialistInstance.getSingleSpecialist);
 
 //create a specialist
 specialistRouter.post(
-  '/',
+  '/:bid',
   authInstance.isAuthenticated,
   authInstance.isAdmin,
-  specialistInstance.createSingleBeautyPackage
+  specialistInstance.createSingleSpecialist
 );
 
 //update a specialist
@@ -27,7 +27,7 @@ specialistRouter.put(
   '/:sid',
   authInstance.isAuthenticated,
   authInstance.isAdmin,
-  specialistInstance.updateBeautyPackage
+  specialistInstance.updateASpecialist
 );
 
 //delete a specialist
@@ -35,7 +35,7 @@ specialistRouter.delete(
   '/:sid',
   authInstance.isAuthenticated,
   authInstance.isAdmin,
-  specialistInstance.deleteBeautyPackage
+  specialistInstance.deleteASpecialist
 );
 
 export default specialistRouter;

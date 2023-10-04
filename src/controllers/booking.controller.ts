@@ -60,6 +60,12 @@ export default class BookingController {
         res.status(404).json({ message: 'beauty package not found!' });
       }
 
+      const existedBooking = await BookingtModel.findById(bid);
+      if (!existedBooking) {
+        res.status(404).json({ message: 'booking does not exist' });
+        return;
+      }
+
       const user = await UserModel.findById(req.user?._id);
       const matchBooking = user?.bookings.find(
         (booking: bookingType) => bid === booking._id.toString()
@@ -67,6 +73,7 @@ export default class BookingController {
 
       if (!matchBooking) {
         res.status(404).json({ message: 'booking does not exist' });
+        return;
       }
 
       await Promise.resolve().then(async () => {
@@ -81,7 +88,9 @@ export default class BookingController {
   public async getAllBookings(req: Request, res: Response) {
     try {
       await Promise.resolve().then(async () => {
-        const bookings = await BookingtModel.find({});
+        const bookings = await BookingtModel.find({}).populate(
+          'beautyPackage user'
+        );
         res.status(200).json(bookings);
       });
     } catch (error: unknown) {

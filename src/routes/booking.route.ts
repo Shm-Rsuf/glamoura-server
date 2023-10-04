@@ -15,7 +15,7 @@ bookingRouter.post(
 );
 
 //delete a booking
-bookingRouter.get(
+bookingRouter.delete(
   '/:bid',
   authInstance.isAuthenticated,
   bookingInstance.deleteSingleBooking

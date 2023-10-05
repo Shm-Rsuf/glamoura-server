@@ -6,7 +6,7 @@ import { handleError } from '../errors/handle.error';
 export default class UserController {
   constructor() {}
 
-  public async getAnUser(req: Request, res: Response) {
+  public async getAnUser(req: Request, res: Response): Promise<void> {
     try {
       const { uid } = req.params;
       const userId = req.user?._id;
@@ -16,7 +16,10 @@ export default class UserController {
       }
 
       if (uid !== userId?.toString()) {
+        console.log(uid);
+        console.log(userId.toString());
         res.status(403).json({ message: 'Forbidden' });
+        return;
       }
 
       await Promise.resolve().then(async () => {

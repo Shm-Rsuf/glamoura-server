@@ -6,7 +6,10 @@ import mongoose from 'mongoose';
 export default class BeautyPackageController {
   constructor() {}
 
-  public async getAllBeautyPackages(req: Request, res: Response) {
+  public async getAllBeautyPackages(
+    req: Request,
+    res: Response
+  ): Promise<void> {
     try {
       await Promise.resolve().then(async () => {
         const beautyPackages = await BeautyPackageModel.find({});
@@ -17,7 +20,10 @@ export default class BeautyPackageController {
     }
   }
 
-  public async getSingleBeautyPackage(req: Request, res: Response) {
+  public async getSingleBeautyPackage(
+    req: Request,
+    res: Response
+  ): Promise<void> {
     try {
       const { bid } = req.params;
 
@@ -34,7 +40,10 @@ export default class BeautyPackageController {
     }
   }
 
-  public async createSingleBeautyPackage(req: Request, res: Response) {
+  public async createSingleBeautyPackage(
+    req: Request,
+    res: Response
+  ): Promise<void> {
     try {
       const { title, description, category, images, price } = req.body;
 
@@ -53,7 +62,7 @@ export default class BeautyPackageController {
     }
   }
 
-  public async updateBeautyPackage(req: Request, res: Response) {
+  public async updateBeautyPackage(req: Request, res: Response): Promise<void> {
     try {
       const { title, description, category, images, price } = req.body;
       const { bid } = req.params;
@@ -81,7 +90,7 @@ export default class BeautyPackageController {
     }
   }
 
-  public async deleteBeautyPackage(req: Request, res: Response) {
+  public async deleteBeautyPackage(req: Request, res: Response): Promise<void> {
     try {
       const { bid } = req.params;
 

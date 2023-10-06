@@ -9,7 +9,7 @@ import { bookingType } from '../types/booking.type';
 export default class BookingController {
   constructor() {}
 
-  public async createSingleBooking(req: Request, res: Response) {
+  public async createSingleBooking(req: Request, res: Response): Promise<void> {
     try {
       const { bid } = req.params;
 
@@ -52,7 +52,7 @@ export default class BookingController {
     }
   }
 
-  public async deleteSingleBooking(req: Request, res: Response) {
+  public async deleteSingleBooking(req: Request, res: Response): Promise<void> {
     try {
       const { bid } = req.params;
 
@@ -85,7 +85,7 @@ export default class BookingController {
     }
   }
 
-  public async getAllBookings(req: Request, res: Response) {
+  public async getAllBookings(req: Request, res: Response): Promise<void> {
     try {
       await Promise.resolve().then(async () => {
         const bookings = await BookingtModel.find({}).populate(
